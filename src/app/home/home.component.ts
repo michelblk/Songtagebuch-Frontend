@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DiaryEntryComponent } from '../diary-entry/diary-entry.component';
+import { DiaryEntry } from '../api/model/diary-entry';
+import { DiaryEntryService } from '../api/service/diary-entry.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [DiaryEntryComponent, AsyncPipe, NgForOf],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  public diaryEntries$!: Observable<DiaryEntry[]>;
 
+  constructor(private diaryEntryService: DiaryEntryService) {}
+
+  ngOnInit() {
+    this.diaryEntries$ = this.diaryEntryService.getDiaryEntriesFromUserOfPastDays(
+      '78b5b2a8-a7e5-477e-b882-9095ebeedd16', // FIXME
+      new Date(),
+      30
+    );
+  }
 }

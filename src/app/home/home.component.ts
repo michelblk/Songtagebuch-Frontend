@@ -4,11 +4,12 @@ import { DiaryEntry } from '../api/model/diary-entry';
 import { DiaryEntryService } from '../api/service/diary-entry.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgForOf } from '@angular/common';
+import {AddDiaryEntryComponent} from "../add-diary-entry/add-diary-entry.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DiaryEntryComponent, AsyncPipe, NgForOf],
+  imports: [DiaryEntryComponent, AsyncPipe, NgForOf, AddDiaryEntryComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

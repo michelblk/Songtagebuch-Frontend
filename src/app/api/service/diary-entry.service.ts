@@ -25,4 +25,12 @@ export class DiaryEntryService {
       { withCredentials: true }
     );
   }
+
+  public add(userid: string, entry: DiaryEntry): Observable<DiaryEntry> {
+    return this.http.put<DiaryEntry>(
+      `http://localhost:8080/users/${userid}/diary`,
+      entry,
+      {withCredentials: true}
+    )
+  }
 }

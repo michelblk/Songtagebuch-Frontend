@@ -1,11 +1,11 @@
 export class Song {
   constructor(
-    public id: string,
-    public interpret: string,
-    public name: string,
-    public album: string,
-    public spotifyId: string,
-    public coverUrl: string,
-    public previewUrl: string
+    public id: string|null = null,
+    public interpret: string|null = null,
+    public name: string|null = null,
+    public album: string|null = null,
+    public spotifyId: string|null = null,
+    public coverUrl: string|null = null,
+    public previewUrl: string|null = null
   ) {}
 }

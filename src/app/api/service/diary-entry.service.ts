@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DiaryEntry } from '../model/diary-entry';
 import { Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class DiaryEntryService {
   public getDiaryEntriesFromUserOfPastDays(
     userid: string,
     date: Date,
-    numberOfDays: number
+    numberOfDays: number,
   ): Observable<DiaryEntry[]> {
     const endDateStr: string = formatDate(date, 'yyyy-MM-dd', 'EN');
     const startDate = new Date(date);
@@ -21,16 +22,16 @@ export class DiaryEntryService {
     const startDateStr: string = formatDate(startDate, 'yyyy-MM-dd', 'EN');
 
     return this.http.get<DiaryEntry[]>(
-      `http://localhost:8080/users/${userid}/diary?from=${startDateStr}&until=${endDateStr}`,
-      { withCredentials: true }
+      `${environment.backendBaseUrl}/users/${userid}/diary?from=${startDateStr}&until=${endDateStr}`,
+      { withCredentials: true },
     );
   }
 
   public add(userid: string, entry: DiaryEntry): Observable<DiaryEntry> {
     return this.http.put<DiaryEntry>(
-      `http://localhost:8080/users/${userid}/diary`,
+      `${environment.backendBaseUrl}/users/${userid}/diary`,
       entry,
-      {withCredentials: true}
-    )
+      { withCredentials: true },
+    );
   }
 }

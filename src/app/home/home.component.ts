@@ -4,7 +4,8 @@ import { DiaryEntry } from '../api/model/diary-entry';
 import { DiaryEntryService } from '../api/service/diary-entry.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgForOf } from '@angular/common';
-import {AddDiaryEntryComponent} from "../add-diary-entry/add-diary-entry.component";
+import { AddDiaryEntryComponent } from '../add-diary-entry/add-diary-entry.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +17,17 @@ import {AddDiaryEntryComponent} from "../add-diary-entry/add-diary-entry.compone
 export class HomeComponent implements OnInit {
   public diaryEntries$!: Observable<DiaryEntry[]>;
 
-  constructor(private diaryEntryService: DiaryEntryService) {}
+  constructor(
+    private diaryEntryService: DiaryEntryService,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit() {
-    this.diaryEntries$ = this.diaryEntryService.getDiaryEntriesFromUserOfPastDays(
-      '78b5b2a8-a7e5-477e-b882-9095ebeedd16', // FIXME
-      new Date(),
-      30
-    );
+    this.diaryEntries$ =
+      this.diaryEntryService.getDiaryEntriesFromUserOfPastDays(
+        this.authService.user$.getValue()?.id || '',
+        new Date(),
+        30,
+      );
   }
 }

@@ -1,13 +1,16 @@
 <div class="card overflow-hidden">
-  <img src="{{ entry.songs[0].coverUrl }}" class="card-img-top" alt="{{ entry.songs[0].name }}">
+  <div class="card-img-top cover" style='background-image: url("{{entry.songs[0].coverUrl}}")'
+       (click)="togglePreviewPlayback()">
+    <div class="song-preview"
+         [class.is-playing]="previewPlayback != null && !previewPlayback.paused && !previewPlayback.ended">
+      <i class="bi bi-play"></i>
+    </div>
+  </div>
 
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let song of entry.songs">
       <div class="text-muted">{{ song.interpret }}</div>
       <div>{{ song.name }}</div>
-      <audio controls preload="none" class="w-100">
-        <source src="{{song.previewUrl}}">
-      </audio>
     </li>
   </ul>
 

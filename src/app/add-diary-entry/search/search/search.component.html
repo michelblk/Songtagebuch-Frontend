@@ -1,0 +1,13 @@
+<div class="container">
+  <form action="#search" method="POST">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Songtitel oder Interpret" (keyup)="search($event)"/>
+    </div>
+  </form>
+  <div>
+    <app-search-result *ngFor="let song of searchResults$ | async" [song]="song"
+                       (click)="selectSong(song)" ></app-search-result>
+  </div>
+</div>
+
+

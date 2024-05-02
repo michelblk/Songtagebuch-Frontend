@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-3">
   <app-add-diary-entry></app-add-diary-entry>
 
-  <div class="row row-cols-lg-6 row-cols-md-3 row-cols-sm-3">
+  <div class="m-0 mt-3 row row-cols-lg-6 row-cols-md-3 row-cols-sm-3">
     <div class="col" *ngFor="let entry of diaryEntries$ | async">
       <app-diary-entry [entry]="entry"></app-diary-entry>
     </div>

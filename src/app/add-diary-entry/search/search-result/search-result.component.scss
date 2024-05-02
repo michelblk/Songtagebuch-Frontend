@@ -1,19 +1,9 @@
-.cover {
-  height: 0;
-  padding-bottom: 100%;
+.song-cover-icon {
+  height: 40px;
+  width: 40px;
   background-position: center;
   background-size: cover;
-}
-
-.song-preview:after {
-  content: " ";
-  background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  height: 0;
-  padding-bottom: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+  background-color: gray;
 }
 
 .song-preview {
@@ -21,8 +11,8 @@
   font-size: 2rem;
   color: #FFFFFF;
   text-align: center;
-  padding-top: 50%;
-  margin-top: -1.5rem;
+  line-height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .song-preview.is-playing {
@@ -33,6 +23,6 @@
   content: "\f4c4"; // override play icon with pause icon
 }
 
-.cover:hover > .song-preview {
+.song-cover-icon:hover > .song-preview {
   display: block;
 }

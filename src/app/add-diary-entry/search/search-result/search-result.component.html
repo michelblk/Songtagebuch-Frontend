@@ -1,0 +1,19 @@
+<div class="row ms-3 me-3">
+  <div class="col col-auto d-flex align-items-center p-0">
+    <div class="song-cover-icon" style='background-image: url("{{ song.coverUrl }}")'
+         (click)="togglePreviewPlayback();$event.stopPropagation()">
+      <div class="song-preview"
+           [class.is-playing]="previewPlayback != null && !previewPlayback.paused && !previewPlayback.ended">
+        <i class="bi bi-play"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div>
+      {{ song.name }} &bullet; {{ song.album }}
+    </div>
+    <div class="text-muted">
+      {{ song.interpret }}
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 FROM --platform=amd64 node:20-alpine AS build
 WORKDIR /app
 RUN npm cache clean --force
-COPY . .
+COPY /src /app/src
+COPY /angular.json /package.json /package-lock.json /tsconfig.app.json /tsconfig.json /app/
 RUN npm install
 RUN npm run build --omit=dev
 

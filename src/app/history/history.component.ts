@@ -11,10 +11,10 @@ import { AuthService } from '../auth/auth.service';
   selector: 'app-home',
   standalone: true,
   imports: [DiaryEntryComponent, AsyncPipe, NgForOf, AddDiaryEntryComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './history.component.html',
+  styleUrl: './history.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class HistoryComponent implements OnInit {
   public diaryEntries$!: Observable<DiaryEntry[]>;
 
   constructor(

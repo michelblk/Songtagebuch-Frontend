@@ -9,8 +9,12 @@
 
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let song of entry.songs">
-      <div class="text-muted">{{ song.interpret }}</div>
-      <div>{{ song.name }}</div>
+      <a
+        href="{{song.externalUrls['spotify'] || 'https://open.spotify.com/search/' + encodeURI(song.interpret + ' ' + song.name)}}"
+        class="text-decoration-none text-dark" target="_blank">
+        <div class="text-muted">{{ song.interpret }}</div>
+        <div>{{ song.name }}</div>
+      </a>
     </li>
   </ul>
 

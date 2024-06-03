@@ -31,7 +31,6 @@ export class AddDiaryEntryComponent implements OnInit, OnDestroy {
   }
 
   selectSong(song: Song) {
-    console.log(song);
     this.submit(song);
   }
 

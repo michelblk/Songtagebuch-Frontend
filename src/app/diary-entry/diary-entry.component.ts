@@ -32,4 +32,6 @@ export class DiaryEntryComponent implements OnInit, OnDestroy {
       this.previewPlayback?.pause();
     }
   }
+
+  protected readonly encodeURI = encodeURI;
 }
